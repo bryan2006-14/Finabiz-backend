@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
-ALLOWED_HOSTS = ['.onrender.com']
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -169,5 +169,6 @@ SIMPLE_JWT = {
 
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ['.onrender.com']
+
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
