@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
+ALLOWED_HOSTS = ['.onrender.com']
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-=q@56r1zc6@l&fc*ldrf#o8b3x^5t++w(ib@73$@hvxv!*a4do
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -166,4 +169,5 @@ SIMPLE_JWT = {
 
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '::1']
+ALLOWED_HOSTS = ['.onrender.com']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
