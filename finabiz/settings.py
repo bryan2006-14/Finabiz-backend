@@ -65,10 +65,10 @@ WSGI_APPLICATION = 'finabiz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_finabiz',
-        'USER': 'db_finabiz_user',
-        'PASSWORD': 'AkwKCIh1aJYNAqd687v8a6WZWgun5Axm',
-        'HOST': 'dpg-d421923ipnbc73buvavg-a.oregon-postgres.render.com',
+        'NAME': 'bd_finabiz',
+        'USER': 'bd_finabiz_user',
+        'PASSWORD': 'r4h7KjwaVA1v4GoLWipGlh1TSfGTrAsS',
+        'HOST': 'dpg-d4mvsvili9vc73f6rbm0-a.oregon-postgres.render.com',
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',
