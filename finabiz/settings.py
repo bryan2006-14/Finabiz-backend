@@ -6,12 +6,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-=q@56r1zc6@l&fc*ldrf#o8b3x^5t++w(ib@73$@hvxv!*a4do'
 
-# 🚨 En Render, debe estar en False (para servir bien los archivos estáticos)
+# Render requiere DEBUG=False
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://finabiz-1.onrender.com', 'localhost', '127.0.0.1']
+# ❗ CORRECCIÓN IMPORTANTE:
+# No puedes poner "https://". Solo dominio puro.
+ALLOWED_HOSTS = [
+    'finabiz-1.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    '*',   # Opcional para desarrollo, puedes quitarlo si deseas más seguridad
+]
 
-# ===================== APPS =====================
+# ============ APPS ============
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,11 +36,11 @@ INSTALLED_APPS = [
     'finanzas',
 ]
 
-# ===================== MIDDLEWARE =====================
+# ============ MIDDLEWARE ============
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ✅ Para servir archivos estáticos
-    'corsheaders.middleware.CorsMiddleware',       # Mantener arriba
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Static files en Render
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,7 +68,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'finabiz.wsgi.application'
 
-# ===================== BASE DE DATOS =====================
+# ============ BASE DE DATOS ============
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -77,7 +84,7 @@ DATABASES = {
     }
 }
 
-# ===================== VALIDACIÓN DE CONTRASEÑAS =====================
+# ============ PASSWORDS ============
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -85,25 +92,25 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# ===================== INTERNACIONALIZACIÓN =====================
+# ============ IDIOMA & TIEMPO ============
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/Lima'
 USE_I18N = True
 USE_TZ = True
 
-# ===================== ARCHIVOS ESTÁTICOS =====================
+# ============ ARCHIVOS ESTÁTICOS ============
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # ✅ Correcto
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Archivos media (opcional, si subes imágenes)
+# Archivos media (si usas imágenes)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# ===================== MODELO DE USUARIO =====================
+# ============ USER MODEL ============
 AUTH_USER_MODEL = 'finanzas.Usuario'
 
-# ===================== REST FRAMEWORK =====================
+# ============ REST FRAMEWORK ============
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -113,13 +120,13 @@ REST_FRAMEWORK = {
     ),
 }
 
-# ===================== JWT =====================
+# ============ JWT ============
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
 
-# ===================== CORS =====================
+# ============ CORS ============
 CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
