@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-=q@56r1zc6@l&fc*ldrf#o8b3x^5t++w(ib@73$@hvxv!*a4do
 # 🚨 En Render, debe estar en False (para servir bien los archivos estáticos)
 DEBUG = False
 
-ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://finabiz-1.onrender.com', 'localhost', '127.0.0.1']
 
 # ===================== APPS =====================
 INSTALLED_APPS = [
